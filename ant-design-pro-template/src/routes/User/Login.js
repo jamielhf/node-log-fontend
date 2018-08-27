@@ -40,7 +40,6 @@ export default class LoginPage extends Component {
 
   render() {
     const { login, submitting } = this.props;
-    console.log(submitting);
     const { type } = this.state;
     return (
       <div className={styles.main}>
@@ -50,7 +49,7 @@ export default class LoginPage extends Component {
               login.type === 'account' &&
               !submitting &&
               this.renderMessage('账户或密码错误（admin/888888）')}
-            <UserName name="userName" placeholder="admin/user" />
+            <UserName name="email" placeholder="邮箱" />
             <Password name="password" placeholder="888888/123456" />
           </Tab>
 
