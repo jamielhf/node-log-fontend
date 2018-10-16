@@ -90,9 +90,9 @@ const proxy = {
       return;
     }
     res.send({
-      status: 'error',
-      type,
-      currentAuthority: 'guest',
+      status: 'ok',
+      type: 'account',
+      currentAuthority: 'admin',
     });
   },
   'POST /api/register': (req, res) => {

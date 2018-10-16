@@ -20,8 +20,9 @@ export default {
         payload: response,
       });
       // Login successfully
-      if (response.status === 'ok') {
+      if (response.status === 200) {
         reloadAuthorized();
+
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
@@ -30,10 +31,12 @@ export default {
           if (redirectUrlParams.origin === urlParams.origin) {
             redirect = redirect.substr(urlParams.origin.length);
             if (redirect.startsWith('/#')) {
+              console.log(2);
               redirect = redirect.substr(2);
             }
           } else {
             window.location.href = redirect;
+
             return;
           }
         }
@@ -62,7 +65,12 @@ export default {
 
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
+      setAuthority(payload.currentAuthority || 'admin');
+      console.log({
+        ...state,
+        status: 'ok' || payload.status,
+        type: 'account' || payload.type,
+      });
       return {
         ...state,
         status: payload.status,
