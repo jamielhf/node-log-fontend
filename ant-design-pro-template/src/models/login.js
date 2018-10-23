@@ -31,7 +31,6 @@ export default {
           if (redirectUrlParams.origin === urlParams.origin) {
             redirect = redirect.substr(urlParams.origin.length);
             if (redirect.startsWith('/#')) {
-              console.log(2);
               redirect = redirect.substr(2);
             }
           } else {
@@ -65,16 +64,16 @@ export default {
 
   reducers: {
     changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority || 'admin');
+      setAuthority(payload.data.type);
       console.log({
         ...state,
-        status: 'ok' || payload.status,
-        type: 'account' || payload.type,
+        status: payload.status === 200 ? 'ok' : '',
+        type: payload.data.type,
       });
       return {
         ...state,
-        status: payload.status,
-        type: payload.type,
+        status: payload.status === 200 ? 'ok' : '',
+        type: payload.data.type,
       };
     },
   },
