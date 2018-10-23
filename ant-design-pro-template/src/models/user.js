@@ -18,9 +18,13 @@ export default {
     },
     *fetchCurrent(_, { call, put }) {
       const response = yield call(queryCurrent);
+      let r = {};
+      if (response.status === 200) {
+        r = response.data;
+      }
       yield put({
         type: 'saveCurrentUser',
-        payload: response,
+        payload: r,
       });
     },
   },
