@@ -94,6 +94,11 @@ export const getRouterData = app => {
     '/': {
       component: dynamicWrapper(app, ['user', 'login'], () => import('../layouts/BasicLayout')),
     },
+    '/userManage/index': {
+      component: dynamicWrapper(app, ['userManage'], () =>
+        import('../routes/UserManage/Index.jsx')
+      ),
+    },
     // '/dashboard/analysis': {
     //   component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
     // },

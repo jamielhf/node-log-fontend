@@ -59,11 +59,22 @@ export async function queryAdvancedProfile() {
 export async function queryFakeList(params) {
   return request(`/api/fake_list?${stringify(params)}`);
 }
-
+/**
+ * 登陆
+ * @param {*} params
+ */
 export async function fakeAccountLogin(params) {
   return request('/api/login', {
     method: 'POST',
     body: params,
+  });
+}
+/**
+ * 登出
+ */
+export async function accountLogout() {
+  return request('/api/logout', {
+    method: 'GET',
   });
 }
 
