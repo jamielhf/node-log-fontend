@@ -28,5 +28,7 @@
     "jest",
     "src/setupTests.ts",
     "tslint.json",
+    "config",
+    "config-overrides.ts"
   ]
 }

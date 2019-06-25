@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'dva';
-import { Link} from 'dva/router';
-import Button from 'antd/lib/button';
+import { Form, Input, Button } from 'antd';
 import './index.scss';
 
 class Index extends React.Component<any>{
@@ -18,17 +17,13 @@ class Index extends React.Component<any>{
   public render() {
     console.log(this.props);
     return (
-      <div className='App'>
-      <div>
-      <Link to='add'>go to add</Link>
-      </div>
-         <p>
-         counter {this.props.global.counter}
-         </p>
-         <Button>123</Button>
-         <button onClick={ ()=>this.add() }>add</button>
-         <button onClick={ ()=>this.continue() }>continue</button>
-      </div>
+      <Form className='g-login'>
+        <Input placeholder='账号' />
+        <Input placeholder='密码' />
+        <Button type='primary' htmlType='submit' className='login-form-button'>
+            登陆
+          </Button>
+      </Form>
     );
   }
 }
